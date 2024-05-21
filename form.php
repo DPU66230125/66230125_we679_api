@@ -69,8 +69,10 @@ if (isset($_GET["method"])) {
                 break;
             case 'form-detail': #รายละเอียดคำขอ VISA
                 # code...
-                if(isset($_GET['form_id'])){
-                    $form_id = $_GET['form_id'];
+                if(isset($_GET['form-id'])){
+                    $form_id = $_GET['form-id'];
+
+                    $response = getFormDetail($conn, $form_id);
                 }else{
                     $response = new Response(false, array('message' => 'unidentified form_id'));
                 }
@@ -133,7 +135,7 @@ function editProfile($conn, $body){
 }
 
 function myForms($conn, $user_id){
-    $sql = "SELECT * FROM `visa_forms` WHERE author_id=$user_id";
+    $sql = "SELECT `id`,`author_id`,`created_date`,`updated_date`,`title` FROM `visa_forms` WHERE author_id=$user_id";
     $result = $conn->query($sql);
 
     $arr = [];
@@ -212,6 +214,23 @@ function deleteForm($conn, $form_id){
         return $response;
     } else {
         $response = new Response(false, array('message' => 'เกิดข้อผิดพลาดไม่สามารถลบแบบฟอร์มได้'));
+        return $response;
+    }
+}
+
+function getFormDetail($conn, $form_id){
+    $sql = "SELECT * FROM `visa_forms` WHERE `id`='$form_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = null;
+        while ($row = $result->fetch_assoc()) {
+            $data = (object)$row;
+        }
+        $response = new Response(true, $data);
+        return $response;
+    } else {
+        $response = new Response(false, array('message' => 'เกิดข้อผิดพลาดไม่สามารถโหลดข้อมูลโปรไฟล์ได้'));
         return $response;
     }
 }

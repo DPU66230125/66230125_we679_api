@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "9977768f-7c1c-4abf-8664-002c0119019a",
+		"name": "WE679-P-2-API-DEPLOY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3694590"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"tummanoonw1997@gmail.com\",\n    \"password\": \"tummanoonw27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/auth.php?method=login",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"auth.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "login"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ดึงข้อมูล Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=profile&user_id=1",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "profile"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "แก้ไข Profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"user_id\": \"1\",\n        \"display_name\": \"Tummanoon W\",\n        \"prefix\": \"Mr.\",\n        \"fname\": \"Tummanoon\",\n        \"mname\": \"Thongthawee\",\n        \"lname\": \"Wanchaem\",\n        \"nationality\": \"Lao\",\n        \"place_of_birth\": \"Vientiane\",\n        \"marital_status\": \"single\",\n        \"date_of_birth\": \"1997-09-27\",\n        \"passport_no\": \"PA0480931\",\n        \"place_of_issue\": \"Lao People Democratic Republic\",\n        \"date_of_issue\": \"2016-05-05\",\n        \"date_of_expiry\": \"2024-05-04\",\n        \"occupation\": \"Software Developer\",\n        \"addr_dom\": null,\n        \"addr_dom_tel\": null,\n        \"addr_perm\": null,\n        \"addr_perm_tel\": null,\n        \"addr_perm_email\": null    \n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=edit-profile",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "edit-profile"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ดึงข้อมูล ประวัติคำขอ VISA",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=my-forms&user_id=1",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "my-forms"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "สร้างคำขอ VISA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=create-form",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "create-form"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "แก้ไขคำขอ VISA",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"title\": \"แบบคำขอ VISA พ.ค.\",\n    \"prefix\": \"Mr.\",\n    \"fname\": \"Tummanoon\",\n    \"mname\": \"Thongthawee\",\n    \"lname\": \"Wanchaem\",\n    \"nationality\": \"Lao\",\n    \"place_of_birth\": null,\n    \"marital_status\": null,\n    \"date_of_birth\": null,\n    \"passport_no\": null,\n    \"place_of_issue\": null,\n    \"date_of_issue\": null,\n    \"date_of_expiry\": null,\n    \"occupation\": null,\n    \"addr_dom\": null,\n    \"addr_dom_tel\": null,\n    \"addr_perm\": null,\n    \"addr_perm_tel\": null,\n    \"addr_perm_email\": null,\n    \"addr_des\": null,\n    \"date_of_arrival\": null,\n    \"travel_by\": null,\n    \"duration_of_stay\": null,\n    \"guarantor_des_name\": null,\n    \"guarantor_des_tel\": null,\n    \"guarantor_dom_name\": null,\n    \"guarantor_dom_tel\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=edit-form",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "edit-form"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ลบคำขอ VISA",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=delete-form",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "delete-form"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "รายละเอียดคำขอ VISA",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.175.155.216/api/p-2/form.php?method=form-detail&form-id=1",
+					"protocol": "http",
+					"host": [
+						"54",
+						"175",
+						"155",
+						"216"
+					],
+					"path": [
+						"api",
+						"p-2",
+						"form.php"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "form-detail"
+						},
+						{
+							"key": "form-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
