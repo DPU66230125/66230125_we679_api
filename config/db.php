@@ -1,15 +1,15 @@
 <?php
-$servername = "127.0.0.1";
+/*$servername = "127.0.0.1";
 $username = "root";
 $password = "root1234";
-$dbname = "p_2";
+$dbname = "p_2";*/
 
-/* for deployment
+//for deployment
 $servername = "127.0.0.1";
 $username = "admin";
 $password = "password";
 $dbname = "p_2";
-*/
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -11,7 +11,7 @@ if (isset($_GET["method"])) {
         $body = json_decode(file_get_contents('php://input'), true);
         $response = NULL;
 
-        switch ($variable) {
+        switch ($method) {
             case 'profile': #ดึงข้อมูลโปรไฟล์
                 # code...
                 if(isset($_GET['user_id'])){
@@ -119,7 +119,7 @@ function editProfile($conn, $body){
                 `occupation`='$profile->occupation',`addr_dom`='$profile->addr_dom',
                 `addr_dom_tel`='$profile->addr_dom_tel',`addr_perm`='$profile->addr_perm',
                 `addr_perm_tel`='$profile->addr_perm_tel',`addr_perm_email`='$profile->addr_perm_email'
-            WHERE `user_id`=$profile->user_id";
+            WHERE `user_id`='$profile->user_id'";
     
     $result = $conn->query($sql);
 
@@ -133,7 +133,7 @@ function editProfile($conn, $body){
 }
 
 function myForms($conn, $user_id){
-    $sql = "SELECT * FROM `visa_forms` WHERE 'user_id'=$user_id";
+    $sql = "SELECT * FROM `visa_forms` WHERE author_id=$user_id";
     $result = $conn->query($sql);
 
     $arr = [];
@@ -153,6 +153,11 @@ function myForms($conn, $user_id){
 
 function createForm($conn, $body){
     $form = new ApplicationForm((object)$body);
+    $author_id = $form->author_id;
+
+    //$raw = getProfile($conn, $author_id);
+    //$profile = $raw->data;
+
     $sql = "INSERT INTO `visa_forms`(`author_id`, `title`, `prefix`, `fname`) 
             VALUES ('$form->author_id','$form->title','$form->prefix','$form->fname')";
     
@@ -184,7 +189,7 @@ function editForm($conn, $body){
             `travel_by`='$form->travel_by',`duration_of_stay`='$form->duration_of_stay',
             `guarantor_des_name`='$form->guarantor_des_name',`guarantor_des_tel`='$form->guarantor_des_tel',
             `guarantor_dom_name`='$form->guarantor_dom_name',`guarantor_dom_tel`='$form->guarantor_dom_tel' 
-            WHERE 'id'=$form->id";
+            WHERE 'id'='$form->id'";
     
     $result = $conn->query($sql);
 
