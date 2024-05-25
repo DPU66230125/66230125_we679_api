@@ -61,5 +61,13 @@ class ApplicationForm{
         $this->addr_perm = $obj->addr_perm;
         $this->addr_perm_tel = $obj->addr_perm_tel;
         $this->addr_perm_email = $obj->addr_perm_email;
+        $this->addr_des = $obj->addr_des;
+        $this->date_of_arrival = $obj->date_of_arrival;
+        $this->travel_by = $obj->travel_by;
+        $this->duration_of_stay = $obj->duration_of_stay ?? 1;
+        $this->guarantor_des_name = $obj->guarantor_des_name;
+        $this->guarantor_des_tel = $obj->guarantor_des_tel;
+        $this->guarantor_dom_name = $obj->guarantor_dom_name;
+        $this->guarantor_dom_tel = $obj->guarantor_dom_tel;
     }
 }

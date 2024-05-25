@@ -115,9 +115,11 @@ function editProfile($conn, $body){
             SET `display_name`='$profile->display_name',`prefix`='$profile->prefix',
                 `fname`='$profile->fname',`mname`='$profile->mname',`lname`='$profile->lname',
                 `nationality`='$profile->nationality',`place_of_birth`='$profile->place_of_birth',
-                `marital_status`='$profile->marital_status',`date_of_birth`='$profile->date_of_birth',
+                `marital_status`='$profile->marital_status',
+                `date_of_birth`=".($profile->date_of_birth==NULL ? "NULL" : "'$profile->date_of_birth'").",
                 `passport_no`='$profile->passport_no',`place_of_issue`='$profile->place_of_issue',
-                `date_of_issue`='$profile->date_of_issue',`date_of_expiry`='$profile->date_of_expiry',
+                `date_of_issue`=".($profile->date_of_issue==NULL ? "NULL" : "'$profile->date_of_issue'").",
+                `date_of_expiry`=".($profile->date_of_expiry==NULL ? "NULL" : "'$profile->date_of_expiry'").",
                 `occupation`='$profile->occupation',`addr_dom`='$profile->addr_dom',
                 `addr_dom_tel`='$profile->addr_dom_tel',`addr_perm`='$profile->addr_perm',
                 `addr_perm_tel`='$profile->addr_perm_tel',`addr_perm_email`='$profile->addr_perm_email'
@@ -179,20 +181,24 @@ function editForm($conn, $body){
     $form = new ApplicationForm((object)$body);
     $sql = "UPDATE `visa_forms` 
             SET `title`='$form->title',`prefix`='$form->prefix',
-            `fname`='$form->fname',`mname`='$form->mname',`lname`='$form->lname',
-            `nationality`='$form->nationality',`place_of_birth`='$form->place_of_birth',
-            `marital_status`='$form->marital_status',`date_of_birth`='$form->date_of_birth',
-            `passport_no`='$form->passport_no',`place_of_issue`='$form->place_of_issue',
-            `date_of_issue`='$form->date_of_issue',`date_of_expiry`='$form->date_of_expiry',
-            `occupation`='$form->occupation',`addr_dom`='$form->addr_dom',
-            `addr_dom_tel`='$form->addr_dom_tel',`addr_perm`='$form->addr_perm',
-            `addr_perm_tel`='$form->addr_perm_tel',`addr_perm_email`='$form->addr_perm_email',
-            `addr_des`='$form->addr_des',`date_of_arrival`='$form->date_of_arrival',
-            `travel_by`='$form->travel_by',`duration_of_stay`='$form->duration_of_stay',
-            `guarantor_des_name`='$form->guarantor_des_name',`guarantor_des_tel`='$form->guarantor_des_tel',
-            `guarantor_dom_name`='$form->guarantor_dom_name',`guarantor_dom_tel`='$form->guarantor_dom_tel' 
-            WHERE 'id'='$form->id'";
-    
+                `fname`='$form->fname',`mname`='$form->mname',`lname`='$form->lname',
+                `nationality`='$form->nationality',`place_of_birth`='$form->place_of_birth',
+                `marital_status`='$form->marital_status',
+                `date_of_birth`=".($form->date_of_birth==NULL ? "NULL" : "'$form->date_of_birth'").",
+                `passport_no`='$form->passport_no',`place_of_issue`='$form->place_of_issue',
+                `date_of_issue`=".($form->date_of_issue==NULL ? "NULL" : "'$form->date_of_issue'").",
+                `date_of_expiry`=".($form->date_of_expiry==NULL ? "NULL" : "'$form->date_of_expiry'").",
+                `occupation`='$form->occupation',`addr_dom`='$form->addr_dom',
+                `addr_dom_tel`='$form->addr_dom_tel',`addr_perm`='$form->addr_perm',
+                `addr_perm_tel`='$form->addr_perm_tel',`addr_perm_email`='$form->addr_perm_email',
+                `addr_des`='$form->addr_des',
+                `date_of_arrival`=".($form->date_of_arrival==NULL ? "NULL" : "'$form->date_of_arrival'").",
+                `travel_by`='$form->travel_by',
+                `duration_of_stay`='$form->duration_of_stay',
+                `guarantor_des_name`='$form->guarantor_des_name',`guarantor_des_tel`='$form->guarantor_des_tel',
+                `guarantor_dom_name`='$form->guarantor_dom_name',`guarantor_dom_tel`='$form->guarantor_dom_tel' 
+            WHERE `id`='$form->id'";
+
     $result = $conn->query($sql);
 
     if ($result == TRUE){
